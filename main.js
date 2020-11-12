@@ -1,10 +1,18 @@
 const abs = (n) => { return (n >= 0 ? n : n * -1) } // Absolute value function.
 
 const sqrt = (t) =>
-{ // Square root using Newthon's Method with a max of 1000 iterations.
+{ // Square root using Newthon's aproximation Method.
 	let r = t / 2.0;
-	for (let i = 0; i <= 1000 ; ++i)
-		r = (r + t / r ) / 2;
+	let new_r;
+	let error = 0.0001 			// Set the max error
+	let max_iterations = 20		// Set max number of iterations
+	for (let i = 0; ++i;)
+	{
+		new_r = (r + t / r ) / 2;
+		if (abs(new_r -r) < error && i > max_iterations)
+			break;
+		r = new_r;
+	}
 	return r;
 }
 
@@ -27,36 +35,35 @@ class Equation
 		console.log(msg + " = 0");
 	}
 
-	get degree(){ return (this.arrx.length - 1)}
+	get degree()
+	{
+		let degree = this.arrx.length - 1;
+		while (this.arrx[degree] === 0)
+			--degree;
+		return (degree < 0 ? 0 : degree);
+	}
+
 	get discriminant()
 	{
 		if (this.degree != 2)
 			return false;
-		return (-4 * this.arrx[2] * this.arrx[0]);
-	}
-
-	get discriminantInfo()
-	{
-
-		if (this.discriminant === 0)
-			console.log("Discriminant is zero, the solution is:");
-		else if (this.discriminant > 0)
-			console.log("Discriminant is strictly positive, the two solutions are:");
-		else
-			console.log("Discriminant is strictly negative, this equation has not solution");
+		return ((this.arrx[1] * this.arrx[1]) - (4 * this.arrx[2] * this.arrx[0]));
 	}
 
 	get solution()
 	{
-		if (this.degree === 1)
+		if (this.degree === 0)
+			return (true)
+		else if(this.degree === 1)
 			return (this.arrx[0] / -this.arrx[1]);
+		else if (this.degree === 2 && this.discriminant > 0)
+		{
+			return ([(-this.arrx[1] + sqrt(this.discriminant)) / (2 * this.arrx[2]),
+			(-this.arrx[1] - sqrt(this.discriminant)) / (2 * this.arrx[2])]);
+		}
+		else if (this.degree === 2 && this.discriminant === 0)
+			return (-this.arrx[1] / (2 * this.arrx[2]));
 
-	}
-
-	printSolution()
-	{
-		if (this.degree === 1)
-			console.log("The solution is:\n" + this.solution);
 	}
 };
 
@@ -80,6 +87,30 @@ const readInput = (str) => {
 	return equ;
 };
 
+const printSolution = (equation) =>
+{
+	if (equation.degree === 0)
+		console.log("There are infinite number of solutions, each real number is a solution.")
+	else if (equation.degree === 1)
+		console.log("The solution is:\n" + equation.solution);
+	else if (equation.degree === 2 && equation.discriminant > 0)
+		console.log(equation.solution[0] + '\n' + equation.solution[1]);
+	else if (equation.degree === 2 && equation.discriminant === 0)
+		console.log(equation.solution === -0 ? 0 : equation.solution);
+}
+
+const discriminantInfo = (equation) =>
+{
+	if (!equation.degree)
+		return;
+	if (equation.discriminant === 0)
+		console.log("Discriminant is zero, the solution is:");
+	else if (equation.discriminant > 0)
+		console.log("Discriminant is strictly positive, the two solutions are:");
+	else
+		console.log("Discriminant is strictly negative, this equation has not solution");
+}
+
 if (process.argv.length != 3) // process.argv es el array de los argv
 	return console.log("Invalid arguments");
 
@@ -92,5 +123,4 @@ if (equ.degree > 2)
 	return;
 }
 equ.discriminantInfo;
-equ.printSolution();
-
+printSolution(equ);
