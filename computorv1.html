@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html title = Computorv1>
 <head>
+	<link rel="stylesheet" href="computor_v1.css">
 </head>
 <body>
-
 	<form name="calculator">
 		<table>
 			<tr>
-				<p>Aquí van los numeritos</p>
+				<td colspan="4">
+					<input type="text" name="display" id="display"> 
+				</td>
+			</tr>
+			<tr>	
+				<td><input type="button" name="one" value="x" 
+					onclick="calculator.display.value += 'x'"></td>
+				<td><input type="button" name="one" value="x2"
+					onclick="calculator.display.value += 'x2'"></td>
+				<td><input type="button" name="one" value="x3"
+	                onclick="calculator.display.value += 'x3'"></td>
+				<td><input type="button" name="one" value="C"
+					onclick="calculator.display.value = ''"></td>
 			</tr>
 			<tr>
-				<td>x</td>
-				<td>x2</td>
-				<td>x3</td>
-				<td>x^</td>
+				<td><input type="button" name="one" value="1" 
+					onclick="calculator.display.value += '1'"></td>
+				<td><input type="button" name="one" value="2" 
+					onclick="calculator.display.value += '2'"></td>
+				<td><input type="button" name="one" value="3" 
+					onclick="calculator.display.value += '3'"></td>
+				<td><input type="button" name="one" value="+" 
+					onclick="calculator.display.value += '+'"></td>
 			</tr>
 			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-				<td>+</td>
+				<td><input type="button" name="one" value="4" 
+					onclick="calculator.display.value += '4'"></td>
+				<td><input type="button" name="one" value="5"
+					onclick="calculator.display.value += '5'"></td>
+				<td><input type="button" name="one" value="6"
+	                onclick="calculator.display.value += '6'"></td>
+				<td><input type="button" name="one" value="-"
+	                onclick="calculator.display.value += '-'"></td>
+			</tr>  
+			<tr>
+				<td><input type="button" name="one" value="7" 
+					onclick="calculator.display.value += '7'"></td>
+				<td><input type="button" name="one" value="8"
+					onclick="calculator.display.value += '8'"></td>
+				<td><input type="button" name="one" value="9"
+	                onclick="calculator.display.value += '9'"></td>
+				<td><input type="button" name="one" value="*"
+	                onclick="calculator.display.value += '*'"></td>
 			</tr>
 			<tr>
-				<td>4</td>
-				<td>5</td>
-				<td>6</td>
-				<td>-</td>
-			</tr>
-			<tr>
-				<td>7</td>
-				<td>8</td>
-				<td>9</td>
-				<td>/</td>
+				<td><input type="button" name="one" value="x^" 
+					onclick="calculator.display.value += 'x^'"></td>
+				<td><input type="button" name="one" value="0"
+					onclick="calculator.display.value += '0'"></td>
+				<td><input type="button" name="one" value="="
+	                onclick="calculator.display.value += '='"></td>
+				<td><input type="button" name="one" value="/"
+	                onclick="calculator.display.value += '='"></td>
 			</tr>
 		</table>
 	</form>
