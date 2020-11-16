@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html title = Computorv1>
 <head>
+	<meta = charset="UTF-8">
 	<link rel="stylesheet" href="computor_v1.css">
+	<script src="./main.js"></script>
 </head>
 <body>
 	<form name="calculator">
@@ -14,12 +16,12 @@
 			<tr>	
 				<td><input type="button" name="one" value="x" 
 					onclick="calculator.display.value += 'x'"></td>
-				<td><input type="button" name="one" value="x2"
-					onclick="calculator.display.value += 'x2'"></td>
-				<td><input type="button" name="one" value="x3"
-	                onclick="calculator.display.value += 'x3'"></td>
-				<td><input type="button" name="one" value="C"
-					onclick="calculator.display.value = ''"></td>
+				<td><input type="button" name="one" value="x²"
+					onclick="calculator.display.value += 'x²'"></td>
+				<td><input type="button" name="one" value="x³"
+	                onclick="calculator.display.value += 'x³'"></td>
+				<td><input type="button" name="one" value="x^"
+					onclick="calculator.display.value = 'x^'"></td>
 			</tr>
 			<tr>
 				<td><input type="button" name="one" value="1" 
@@ -52,14 +54,22 @@
 	                onclick="calculator.display.value += '*'"></td>
 			</tr>
 			<tr>
-				<td><input type="button" name="one" value="x^" 
-					onclick="calculator.display.value += 'x^'"></td>
+				<td><input type="button" name="one" value="." 
+					onclick="calculator.display.value += '.'"></td>
 				<td><input type="button" name="one" value="0"
 					onclick="calculator.display.value += '0'"></td>
 				<td><input type="button" name="one" value="="
 	                onclick="calculator.display.value += '='"></td>
 				<td><input type="button" name="one" value="/"
 	                onclick="calculator.display.value += '='"></td>
+			</tr>
+			<tr>
+				<td><input type="button" name="AC" value="AC"
+					onclick="calculator.display.value = ''"></td>
+				<td colspan="3">
+					<input style="width:210px;background:darkorange" type="button"
+					name="Result" value="RESOLVE"
+					  onclick="myScript"</td>
 			</tr>
 		</table>
 	</form>
